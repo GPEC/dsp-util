@@ -4,8 +4,8 @@
 library(assertthat)
 
 # need to change the following to point to correct files related to your project
-pre_fname <-"/mnt/vm_shared/mapcore/SOW GSC-2256/md5sum_results.txt" 
-post_fname <- "/mnt/vm_shared/mapcore/SOW GSC-2256/md5sum_check.txt" 
+pre_fname <-"/mnt/vm_shared/mapcore/SOW GSC-2276/md5sum_results.txt" 
+post_fname <- "/mnt/vm_shared/mapcore/SOW GSC-2276/md5sum_check.txt" 
 
 ########################################
 ### no need to change anything below ###

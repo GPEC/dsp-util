@@ -11,8 +11,8 @@
 
 # USER INPUT ------------------------------------------------------------------#
 # sequence code indices file
-code_indices_fname <- "/mnt/vm_shared/mapcore/SOW GSC-2256/FORWARD_BCGSC_FORMAT_Steidl Hu WTA batch 1 8Sept2022_20220920T2307_SeqCodeIndices.csv"
-fastq_dir <- "/mnt/vm_shared/mapcore/SOW GSC-2256/fastq" 
+code_indices_fname <- "/mnt/vm_shared/mapcore/SOW GSC-2276/Kronstad MsWTA H99-1135_20221102T1736_SeqCodeIndices.csv"
+fastq_dir <- "/mnt/vm_shared/mapcore/SOW GSC-2276/fastq" 
 sheet_name <- "S1" # not directly used by pipeline ... any non-empty value would work.
 lane <- "L002" # TODO ... NEXT TIME SHOULD TRY READ FROM FILE FROM GSC!!! e.g. from GSC-2216_IX10953_HNKLKDSX3_2_gsc_library.summary
 ending <- "001" # do not change ... always end in '001'
@@ -35,7 +35,10 @@ c_indices_d <- read.csv(code_indices_fname,header=TRUE,stringsAsFactors=FALSE)
 assertthat::assert_that(length(unique(c_indices_d[,indices_file_specimen_id_col]))==nrow(c_indices_d), msg="unable to find unique match in indices file for some file(s)")
 
 lookup_fname <- function(target_seq) {
-  all_fastq_files[grep(target_seq,all_fastq_files)]
+  # only match first sequence e.g.
+  # PX2676_CTCCGTAC-CGTTAAGC_1_150bp_4_lanes.merge.fastq.gz
+  # match with "CTCCGTAC"
+  all_fastq_files[grep(paste0("_",target_seq,"-"),all_fastq_files)]
 }
 
 # given GSC file name e.g. HNKLKDSX3_2_1_GATATCTG-TGCAGAAT_150bp.concat.fastq.gz
