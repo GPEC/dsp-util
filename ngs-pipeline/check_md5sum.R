@@ -4,8 +4,8 @@
 library(assertthat)
 
 # need to change the following to point to correct files related to your project
-pre_fname <-"/mnt/vm_shared/mapcore/SOW GSC-2276/md5sum_results.txt" 
-post_fname <- "/mnt/vm_shared/mapcore/SOW GSC-2276/md5sum_check.txt" 
+pre_fname <-"/mnt/vm_shared/mapcore/SOW GSC-2547/md5sum_results.txt" 
+post_fname <- "/mnt/vm_shared/mapcore/SOW GSC-2547/md5sum_check.txt" 
 
 ########################################
 ### no need to change anything below ###
@@ -17,7 +17,10 @@ post_d <- read.delim(post_fname,header=FALSE,sep=" ")
 
 # format
 pre_d$fname <- sub("./","",pre_d$V3,fixed=TRUE)
-post_d$fname <- post_d$V3
+post_d$fname <- sapply(post_d$V3,function(x){
+  temp <- strsplit(x,"/")[[1]]
+  return(temp[length(temp)])
+})
 assertthat::assert_that(sum(post_d$fname %in% pre_d$fname)==nrow(post_d))
 
 pre_d$md5sum <- pre_d$V1
