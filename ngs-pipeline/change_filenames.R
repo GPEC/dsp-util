@@ -11,8 +11,8 @@
 
 # USER INPUT ------------------------------------------------------------------#
 # sequence code indices file
-code_indices_fname <- "/mnt/vm_shared/mapcore/SOW GSC-2276/Kronstad MsWTA H99-1135_20221102T1736_SeqCodeIndices.csv"
-fastq_dir <- "/mnt/vm_shared/mapcore/SOW GSC-2276/fastq" 
+code_indices_fname <- "/mnt/vm_shared/mapcore/SOW GSC-2543/REVERSE_SOW0876 TAoki 21Dec2023_20240221T2135_SeqCodeIndices.csv"
+fastq_dir <- "/mnt/vm_shared/mapcore/SOW GSC-2543/fastq" 
 sheet_name <- "S1" # not directly used by pipeline ... any non-empty value would work.
 lane <- "L002" # TODO ... NEXT TIME SHOULD TRY READ FROM FILE FROM GSC!!! e.g. from GSC-2216_IX10953_HNKLKDSX3_2_gsc_library.summary
 ending <- "001" # do not change ... always end in '001'

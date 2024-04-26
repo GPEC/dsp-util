@@ -4,12 +4,17 @@
 library(assertthat)
 
 # need to change the following to point to correct files related to your project
-pre_fname <-"/mnt/vm_shared/mapcore/SOW GSC-2547/md5sum_results.txt" 
-post_fname <- "/mnt/vm_shared/mapcore/SOW GSC-2547/md5sum_check.txt" 
+pre_fname <-"/mnt/vm_shared/mapcore/SOW GSC-2543/fastq/md5sum_results.txt" 
+post_fname <- "/mnt/vm_shared/mapcore/SOW GSC-2543/fastq/md5sum_check.txt" 
 
 ########################################
 ### no need to change anything below ###
 ########################################
+
+cat("checking MD5 sums of downloaded fastq files ...\n")
+cat("MD5 sum given by GSC: ",pre_fname,"\n")
+cat("MC5 sum generated after download: ",post_fname,"\n")
+cat("...")
 
 pre_d <- read.delim(pre_fname,header=FALSE,sep=" ")
 post_d <- read.delim(post_fname,header=FALSE,sep=" ")
