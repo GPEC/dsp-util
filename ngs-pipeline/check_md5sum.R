@@ -37,3 +37,4 @@ assertthat::assert_that(
   msg="md5sum check FAILED!!!")
 
 cat("done. MD5 sum consistent.\n")
+print(date())
