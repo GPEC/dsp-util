@@ -11,8 +11,8 @@
 
 # USER INPUT ------------------------------------------------------------------#
 # sequence code indices file
-code_indices_fname <- "/mnt/vm_shared/mapcore/SOW GSC-2543/REVERSE_SOW0876 TAoki 21Dec2023_20240221T2135_SeqCodeIndices.csv"
-fastq_dir <- "/mnt/vm_shared/mapcore/SOW GSC-2543/fastq" 
+code_indices_fname <- "/mnt/vm_shared/mapcore/SOW GSC-2547/REVERSE_SOW0745 PCBC DSP_20240308T2231_SeqCodeIndices.csv"
+fastq_dir <- "/mnt/vm_shared/mapcore/SOW GSC-2547/fastq/22HJWNLT3_5"
 sheet_name <- "S1" # not directly used by pipeline ... any non-empty value would work.
 lane <- "L002" # TODO ... NEXT TIME SHOULD TRY READ FROM FILE FROM GSC!!! e.g. from GSC-2216_IX10953_HNKLKDSX3_2_gsc_library.summary
 ending <- "001" # do not change ... always end in '001'
@@ -20,7 +20,8 @@ indices_file_specimen_id_col <- "index" # the column name of code_indices_fname 
 # END OF USER INPUT -----------------------------------------------------------#
 
 ### the following should not need to be be changed #############################
-
+log_fname <- file.path(fastq_dir,"rename.log")
+sink(log_fname)
 cat("change file name GSC format to Nanostring format ...\n")
 cat("FASTQ dir:",fastq_dir,"\n")
 
@@ -28,7 +29,7 @@ cat("FASTQ dir:",fastq_dir,"\n")
 assertthat::assert_that(length(fastq_dir)==1)
 
 # lookup fastq files
-all_fastq_files <- dir(fastq_dir,full.names = FALSE)
+all_fastq_files <- dir(fastq_dir,pattern="*.fastq.gz",full.names = FALSE)
 
 c_indices_d <- read.csv(code_indices_fname,header=TRUE,stringsAsFactors=FALSE)
 # make sure sample id column do uniquely identify specimen
@@ -69,7 +70,7 @@ for (i in 1:nrow(c_indices_d)) {
 }
 fname_map_d <- fname_map_d[-1,]
 
-# make new file names are unique!!!
+# make sure new file names are unique!!!
 # otherwise, we will be overwriting files!
 assertthat::assert_that(length(unique(fname_map_d$new_fname))==nrow(fname_map_d))
 
@@ -96,3 +97,5 @@ cat("\ndone.\n")
 
 cat(date())
 cat("\n")
+sink()
+cat(paste0("rename completed; output sent to",log_fname,".\n"))
