@@ -9,9 +9,11 @@
 #
 
 # USER INPUT ------------------------------------------------------------------#
-input_dir <- "/mnt/vm_shared/mapcore/SOW GSC-2543_test/fastq" # fastq files that needs extra character removed
-output_dir <- "/mnt/vm_shared/mapcore/SOW GSC-2543_test/fastq_mod" # folder for processed fastq files with extra character removed
+input_dir <- "/mnt/vm_shared/mapcore/SOW GSC-2547/fastq/22HJWNLT3_4/" # fastq files that needs extra character removed
+output_dir <- "/mnt/vm_shared/mapcore/SOW GSC-2547/fastq_mod/22HJWNLT3_4/" # folder for processed fastq files with extra character removed
 # END OF USER INPUT -----------------------------------------------------------#
+
+# NO NEED TO MODIFY ANYTHING BELOW !!! #########################################################################
 
 assertthat::assert_that(input_dir != output_dir,msg="input and output folders must be different!")
 cat("preprocessing fastq files ... please wait ...")
